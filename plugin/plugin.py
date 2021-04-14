@@ -35,7 +35,7 @@ class NFSServerSetup(Screen, ConfigListScreen):
 		}, -2)
 
 		self.list = []
-		ConfigListScreen.__init__(self, self.list, session = self.session)
+		ConfigListScreen.__init__(self, self.list, session=self.session)
 
 		exportchoices = [ '-', '/media/hdd/movie', '/media/hdd', '/' ]
 		value = '-'
@@ -50,7 +50,7 @@ class NFSServerSetup(Screen, ConfigListScreen):
 					value = '-'
 		except IOError:
 			pass
-		self.exports = ConfigSelection(choices = exportchoices, default = value)
+		self.exports = ConfigSelection(choices=exportchoices, default=value)
 
 		self.list.append(getConfigListEntry(_("Export"), self.exports))
 		self["config"].list = self.list
@@ -72,4 +72,4 @@ def main(session, **kwargs):
 	session.open(NFSServerSetup)
 
 def Plugins(**kwargs):
-	return PluginDescriptor(name = "NFS server setup", description = "Lets you configure nfs exports", where = PluginDescriptor.WHERE_PLUGINMENU, fnc = main)
+	return PluginDescriptor(name="NFS server setup", description="Lets you configure nfs exports", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)
