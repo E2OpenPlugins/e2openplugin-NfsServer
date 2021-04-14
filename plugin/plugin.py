@@ -37,7 +37,7 @@ class NFSServerSetup(Screen, ConfigListScreen):
 		self.list = []
 		ConfigListScreen.__init__(self, self.list, session=self.session)
 
-		exportchoices = [ '-', '/media/hdd/movie', '/media/hdd', '/' ]
+		exportchoices = ['-', '/media/hdd/movie', '/media/hdd', '/']
 		value = '-'
 		try:
 			file = open(NFSServerSetup.exportfile, "r")
