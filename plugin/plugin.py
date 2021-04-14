@@ -6,6 +6,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.Button import Button
 from os import system
 
+
 class NFSServerSetup(Screen, ConfigListScreen):
 	skin = """
 	<screen position="c-175,c-75" size="350,150" title="NFS server setup">
@@ -68,8 +69,10 @@ class NFSServerSetup(Screen, ConfigListScreen):
 	def keyCancel(self):
 		self.close()
 
+
 def main(session, **kwargs):
 	session.open(NFSServerSetup)
+
 
 def Plugins(**kwargs):
 	return PluginDescriptor(name="NFS server setup", description="Lets you configure nfs exports", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)
