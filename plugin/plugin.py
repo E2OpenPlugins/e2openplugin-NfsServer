@@ -6,6 +6,7 @@ from Components.ConfigList import ConfigListScreen
 from Components.Button import Button
 from os import system
 
+
 class NFSServerSetup(Screen, ConfigListScreen):
 	skin = """
 	<screen position="c-175,c-75" size="350,150" title="NFS server setup">
@@ -35,9 +36,9 @@ class NFSServerSetup(Screen, ConfigListScreen):
 		}, -2)
 
 		self.list = []
-		ConfigListScreen.__init__(self, self.list, session = self.session)
+		ConfigListScreen.__init__(self, self.list, session=self.session)
 
-		exportchoices = [ '-', '/media/hdd/movie', '/media/hdd', '/' ]
+		exportchoices = ['-', '/media/hdd/movie', '/media/hdd', '/']
 		value = '-'
 		try:
 			file = open(NFSServerSetup.exportfile, "r")
@@ -50,7 +51,7 @@ class NFSServerSetup(Screen, ConfigListScreen):
 					value = '-'
 		except IOError:
 			pass
-		self.exports = ConfigSelection(choices = exportchoices, default = value)
+		self.exports = ConfigSelection(choices=exportchoices, default=value)
 
 		self.list.append(getConfigListEntry(_("Export"), self.exports))
 		self["config"].list = self.list
@@ -68,8 +69,10 @@ class NFSServerSetup(Screen, ConfigListScreen):
 	def keyCancel(self):
 		self.close()
 
+
 def main(session, **kwargs):
 	session.open(NFSServerSetup)
 
+
 def Plugins(**kwargs):
-	return PluginDescriptor(name = "NFS server setup", description = "Lets you configure nfs exports", where = PluginDescriptor.WHERE_PLUGINMENU, fnc = main)
+	return PluginDescriptor(name="NFS server setup", description="Lets you configure nfs exports", where=PluginDescriptor.WHERE_PLUGINMENU, fnc=main)
